@@ -25,7 +25,7 @@ public class CardBorders : MonoBehaviour
 		}
 	}
 
-	public GameObject GetEmptyCardBorder(int player)
+	public static GameObject GetEmptyCardBorder(int player)
 	{
 		GameObject emptyCardBorder = null;
 
@@ -36,6 +36,7 @@ public class CardBorders : MonoBehaviour
 				if (GlobalVariables.cardBordersPlayerOne[i].GetComponent<CardBorder>().isEmpty)
 				{
 					emptyCardBorder = GlobalVariables.cardBordersPlayerOne[i];
+					break;
 				}
 			}
 		}
@@ -46,6 +47,7 @@ public class CardBorders : MonoBehaviour
 				if (GlobalVariables.cardBordersPlayerTwo[i].GetComponent<CardBorder>().isEmpty)
 				{
 					emptyCardBorder = GlobalVariables.cardBordersPlayerTwo[i];
+					break;
 				}
 			}
 		}
