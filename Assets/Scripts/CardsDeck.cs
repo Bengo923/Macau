@@ -17,6 +17,8 @@ public class CardsDeck : MonoBehaviour
 		for (int i = 0; i < cards.Count; i++)
 		{
 			GlobalVariables.cards.Add(cards[i]);
+			Card.GetCardType(GlobalVariables.cards[i]);
+			Card.GetCardValue(GlobalVariables.cards[i]);
 		}
 	}
 
