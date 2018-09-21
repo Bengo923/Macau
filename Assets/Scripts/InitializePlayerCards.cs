@@ -15,7 +15,7 @@ public class InitializePlayerCards : MonoBehaviour
 	{
 		for (int i = 0; i < 10; i++)
 		{
-			DeckCard.InstantiateCard(DeckCard.PickFirstCard(), CardBorders.GetEmptyCardBorder(GlobalVariables.turn));
+			Utilities.InstantiateCard(Utilities.PickFirstCard(), CardBorders.GetEmptyCardBorder(GlobalVariables.turn));
 		}
 	}
 }

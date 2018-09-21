@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Player One Cards
+  - Player Two Cards
   layers:
   - Default
   - TransparentFX

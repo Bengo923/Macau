@@ -3997,7 +3997,7 @@ GameObject:
   - component: {fileID: 1027235497}
   m_Layer: 5
   m_Name: Player 2
-  m_TagString: Untagged
+  m_TagString: Player Two Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4723,6 +4723,9 @@ GameObject:
   - component: {fileID: 1257679177}
   - component: {fileID: 1257679179}
   - component: {fileID: 1257679180}
+  - component: {fileID: 1257679181}
+  - component: {fileID: 1257679182}
+  - component: {fileID: 1257679183}
   m_Layer: 0
   m_Name: __SCRIPTS__
   m_TagString: Untagged
@@ -4873,6 +4876,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafca7390d6a9744b8b72337fa7887c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1257679181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1257679176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c2a510e221c74ab417ed33e9dbecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainingCardsText: {fileID: 148641743}
+--- !u!114 &1257679182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1257679176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39bdb0d89cf1f9e45a657b94f366e930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1257679183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1257679176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3124a01983ca14f48bada2e7d033e636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOne: {fileID: 1280709283}
+  playerTwo: {fileID: 1027235496}
 --- !u!1 &1280709283
 GameObject:
   m_ObjectHideFlags: 0
@@ -4883,7 +4922,7 @@ GameObject:
   - component: {fileID: 1280709284}
   m_Layer: 5
   m_Name: Player 1
-  m_TagString: Untagged
+  m_TagString: Player One Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5916,7 +5955,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Player Turn: 2'
+  m_Text: 'Player Turn: 1'
 --- !u!222 &1695026389
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6342,7 +6381,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91657db39cc0dcb448f8c65d2a1c4ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remainingCardsText: {fileID: 148641743}
 --- !u!1001 &1966728539
 Prefab:
   m_ObjectHideFlags: 0

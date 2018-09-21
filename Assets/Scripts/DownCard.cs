@@ -11,9 +11,9 @@ public class DownCard : MonoBehaviour
 
 	private void PutFirstDownCard()
 	{
-		GameObject firstCardPrefab = DeckCard.PickFirstCard(false);
+		GameObject firstCardPrefab = Utilities.PickFirstCard(false);
 
-		GameObject firstCard = DeckCard.InstantiateCard(firstCardPrefab, gameObject);
+		GameObject firstCard = Utilities.InstantiateCard(firstCardPrefab, gameObject);
 
 		firstCard.GetComponent<Card>().isDown = true;
 

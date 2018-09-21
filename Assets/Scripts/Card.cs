@@ -9,8 +9,11 @@ public class Card : MonoBehaviour, IPointerDownHandler
 {
 	private GameObject downCard;
 
+	private GameObject playerOne;
+	private GameObject playerTwo;
+
 	private bool isSelected = false;
-	private bool isCardSelectedOtherTurn = false;
+	private readonly bool isCardSelectedOtherTurn = false;
 
 	public bool isDown = false;
 
@@ -20,32 +23,35 @@ public class Card : MonoBehaviour, IPointerDownHandler
 
 	public Color selectedColor;
 	public Color cannotBeSelectedColor;
-	public Color unavailableColor;
+	public static Color unavailableColor;
 
 	public string value;
 	public string type;
 
 	private void Start()
 	{
-		downCard = GameObject.Find("Down Card");
+		GetDownCard();
+		SetColor();
 
-		initialColor = gameObject.GetComponent<Image>().color;
-		selectedColor = new Vector4(0.75f, 0.75f, 1f, 1f);
-		cannotBeSelectedColor = new Vector4(1f, 0.75f, 0.75f, 1f);
-		unavailableColor = new Vector4(0.75f, 0.75f, 0.75f, 1f);
+		playerOne = GameObject.FindGameObjectWithTag("Player One Cards");
+		playerTwo = GameObject.FindGameObjectWithTag("Player Two Cards");
 	}
 
 	private void Update()
 	{
 		CheckCardSelectedOtherTurn();
+
+		Utilities.AreCardsSelected();
+
+		ChangeCardColor();
+
+		LoseGame();
 	}
 
 	public void OnPointerDown(PointerEventData pointerEventData)
 	{
 		SelectCard();
 		PutCardDown();
-
-		ChangeCardColor();
 	}
 
 	private void SelectCard()
@@ -93,7 +99,7 @@ public class Card : MonoBehaviour, IPointerDownHandler
 
 	private void CardNotSelected()
 	{
-		gameObject.transform.localPosition = Vector3.zero;
+		Utilities.SetPositionZero(gameObject);
 		gameObject.GetComponent<Image>().color = initialColor;
 
 		GlobalVariables.cardsSelected.Remove(gameObject);
@@ -227,29 +233,44 @@ public class Card : MonoBehaviour, IPointerDownHandler
 		}
 	}
 
-	private bool AreCardsSelected()
+	private void ChangeCardColor()
 	{
-		if (GlobalVariables.cardsSelected.Count > 0)
+		if (GlobalVariables.areCardsSelected)
 		{
-			return true;
+			for (int i = 0; i < GlobalVariables.cardsPlayerOne.Count; i++)
+			{
+				GameObject card = GlobalVariables.cardsPlayerOne[i];
+				if (!GlobalVariables.cardsSelected.Contains(card))
+				{
+					card.GetComponent<Image>().color = unavailableColor;
+				}
+			}
 		}
 		else
 		{
-			return false;
+			for (int i = 0; i < GlobalVariables.cardsPlayerOne.Count; i++)
+			{
+				GameObject card = GlobalVariables.cardsPlayerOne[i];
+				card.GetComponent<Image>().color = initialColor;
+			}
 		}
 	}
 
-	private void ChangeCardColor()
+	private void SetColor()
 	{
-		if (AreCardsSelected())
-		{
-			//for (int i = 0; i < playerOneCards.transform.childCount-1; i++)
-			//{
-			//	Transform playerOneChild = playerOneCards.transform.GetChild(i);
-			//	GameObject card = playerOneChild.GetChild(0).gameObject;
+		initialColor = gameObject.GetComponent<Image>().color;
+		selectedColor = new Vector4(0.5f, 0.5f, 1f, 1f);
+		cannotBeSelectedColor = new Vector4(1f, 0.75f, 0.75f, 1f);
+		unavailableColor = new Vector4(0.75f, 0.75f, 0.75f, 1f);
+	}
 
-			//	card.GetComponent<Image>().color = unavailableColor;
-			//}
-		}
+	private void GetDownCard()
+	{
+		downCard = GameObject.Find("Down Card");
+	}
+
+	private void LoseGame()
+	{
+		print(GlobalVariables.cardsPlayerOne.Count);
 	}
 }
